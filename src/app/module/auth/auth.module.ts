@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, Route } from '@angular/router';
+import { ActivatedRoute, Router, Route, RouterModule } from '@angular/router';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -18,8 +18,8 @@ import { AuthComponent } from './auth.component';
   ],
   imports: [
     CommonModule,
-    Router,
-    AuthRoutingModule
+    RouterModule,
+    AuthRoutingModule // This will bring in any routes defines in the model.
   ]
 })
 export class AuthModule {

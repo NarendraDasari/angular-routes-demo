@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './module/auth/auth.component';
+import { ChangePasswordComponent } from './module/auth/change-password/change-password.component';
 import { ChangeUsernameComponent } from './module/auth/change-username/change-username.component';
 import { LoginComponent } from './module/auth/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -38,16 +39,7 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'change-username',
-        component: ChangeUsernameComponent
-      }
-    ]
+    loadChildren: () => import('./module/auth/auth.module').then(model => model.AuthModule),
   },
   {
     path: '**', // this matchs to anything. so make sure this is always your last routes.
@@ -76,7 +68,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { enableTracing: true }) // help in debugging the routes.
+    RouterModule.forRoot(routes, { enableTracing: true }), // help in debugging the routes.
+
   ],
   exports: [RouterModule]
 })
