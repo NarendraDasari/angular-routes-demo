@@ -1,0 +1,9 @@
+<p>users works!</p>
+<a routerLink="/user/12">User Details</a>
+<a routerLinkActive="active" routerLink="/user/14">nar</a>
+<!-- <a [routerLink]="['users', obj.Id]">My Details</a> -->
+
+<p>Button Componnets</p>
+<button (click)="goToProfile()">Profile</button>
+<button (click)="goToContact()">Contact</button>
+<router-outlet></router-outlet>
