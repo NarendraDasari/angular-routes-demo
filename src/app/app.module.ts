@@ -23,7 +23,7 @@ import { ContactComponent } from './pages/users/contact/contact.component';
     UserDetailsComponent,
     NotFoundComponent,
     ProfileComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

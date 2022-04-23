@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './module/login/login.component';
+import { AuthComponent } from './module/auth/auth.component';
+import { ChangeUsernameComponent } from './module/auth/change-username/change-username.component';
+import { LoginComponent } from './module/auth/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { ContactComponent } from './pages/users/contact/contact.component';
@@ -32,14 +34,31 @@ const routes: Routes = [
     path: 'user/:id',
     component: UserDetailsComponent
   },
+
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'change-username',
+        component: ChangeUsernameComponent
+      }
+    ]
   },
   {
-    path: '**', // this matchs to anything
+    path: '**', // this matchs to anything. so make sure this is always your last routes.
     component: NotFoundComponent
-  }
+  },
+
+  // {
+  //   path: 'auth',
+  //   component: AuthComponent,
+  //   loadChildren: () => import('./module/auth/auth-routing.module').then(model => model.AuthRoutingModule)
+  // }
   // {
   //   path: 'module',
   //   component: LoginModule,
